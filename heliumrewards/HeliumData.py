@@ -6,6 +6,12 @@ with open('Endpoints.json','r') as ApiManager:
   api = json.load(ApiManager)
   ApiManager.close()
 
+def fetchPreviousData():
+  with open('hotspotdata.json','r') as previousData:
+    datacontents = json.loads(previousData.read())
+    return datacontents['rewards_v2_num']
+
+
 accessToken = api['PushbulletAccessToken']
 hotspotAddress = api['B58_Address']
 
@@ -28,9 +34,8 @@ data = json.loads(response.text)
 dataStorage = {'rewards_v2_num'}
 
 number = data['data']['rewards_v2']
-with open('hotspotdata.json','r') as previousData:
-  datacontents = json.loads(previousData.read())
-  last_number = datacontents['rewards_v2_num']
+
+last_number = fetchPreviousData()
 
 if number > last_number:
   with open('hotspotdata.json','w') as datafileWrite:
@@ -39,4 +44,5 @@ if number > last_number:
 
   pb = Pushbullet(accessToken)
   push = pb.push_note('Rewards',number)
+
 
