@@ -1,0 +1,9 @@
+{
+  "B58_Address":"11xEAHicBRPog2cJNmXLj17SC1k5meoYVrrhdeZKnEA3SwFZMmZ",
+  "PushbulletAccessToken":"o.ZKJxDw19XXv0pYvYhR61H5blyPuDF8Tk",
+  "URL_Endpoints":
+  {
+    "ActivityCount":"https://api.helium.io/v1/hotspots/:address/activity/count",
+    "rewardsURL":"https://api.helium.io/v1/hotspots/:address/rewards"
+  }
+}
